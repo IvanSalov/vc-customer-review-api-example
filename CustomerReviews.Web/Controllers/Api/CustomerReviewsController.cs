@@ -66,6 +66,7 @@ namespace CustomerReviews.Web.Controllers.Api
         [HttpPut]
         [Route("{id}")]
         [ResponseType(typeof(void))]
+        [CheckPermission(Permission = PredefinedPermissions.CustomerReviewUpdate)]
         public IHttpActionResult Update(string id, CustomerReviewUpdateModel model)
         {
             _customerReviewService.UpdateCustomerReview(model);
@@ -95,6 +96,7 @@ namespace CustomerReviews.Web.Controllers.Api
         [HttpGet]
         [Route("{id}")]
         [ResponseType(typeof(CustomerReviewResponseModel))]
+        [CheckPermission(Permission = PredefinedPermissions.CustomerReviewRead)]
         public IHttpActionResult Get(string id)
         {
             var result = _customerReviewService.GetCustomerReviewById(id);
